@@ -1,4 +1,4 @@
-FROM node:20-buster
+FROM node:20-bookworm-slim
 
 USER root
 RUN apt-get update && \
@@ -7,13 +7,11 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-# Copy your own repo files
 COPY . .
 
-# Install dependencies
 RUN npm install
 
-EXPOSE 7860
 ENV NODE_ENV=production
+EXPOSE 7860
 
 CMD ["npm", "start"]
